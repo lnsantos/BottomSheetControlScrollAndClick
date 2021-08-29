@@ -26,12 +26,12 @@ abstract class MainBottomSheet : BottomSheetDialogFragment(){
         onReleaseClickOutside(canReleaseBehavior)
         onDisableDraggableBehavior(canDisableDraggable)
     }
-    
+
     fun onReleaseClickOutside(canReleaseClick: Boolean = true){
         isCancelable = canReleaseClick
     }
 
-    fun onDisableDraggableBehavior(canDisableDraggable: Boolean = true) {
+    private fun onDisableDraggableBehavior(canDisableDraggable: Boolean = true) {
         dialog?.setCanceledOnTouchOutside(canDisableDraggable)
     }
 
