@@ -1,10 +1,4 @@
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-
-abstract class ControlBottomSheet : BottomSheetDialogFragment(){
+abstract class MainBottomSheet : BottomSheetDialogFragment(){
 
     abstract fun init(
         inflater: LayoutInflater,
@@ -18,13 +12,21 @@ abstract class ControlBottomSheet : BottomSheetDialogFragment(){
     ): View? {
         return init(inflater, container, savedInstanceState)
     }
-    
-    fun onReleaseClickAndBlockDraggableBehaviorBottomSheet(canReleaseBehavior: Boolean = true){
+
+    fun releaseClickAndBlockDraggable(){
+        val canReleaseBehavior = true
         val canDisableDraggable = !canReleaseBehavior
         onReleaseClickOutside(canReleaseBehavior)
         onDisableDraggableBehavior(canDisableDraggable)
     }
 
+    fun releaseDraggableAndBlockClick(){
+        val canReleaseBehavior = false
+        val canDisableDraggable = !canReleaseBehavior
+        onReleaseClickOutside(canReleaseBehavior)
+        onDisableDraggableBehavior(canDisableDraggable)
+    }
+    
     fun onReleaseClickOutside(canReleaseClick: Boolean = true){
         isCancelable = canReleaseClick
     }
